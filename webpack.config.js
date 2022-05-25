@@ -6,6 +6,9 @@ const htmlPlugin = new HtmlWebPackPlugin({
 });
 module.exports = {
   entry: "./src/index.tsx",
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js']
+  },  
   output: { // NEW
     path: path.join(__dirname, 'dist'),
     filename: "[name].js"
