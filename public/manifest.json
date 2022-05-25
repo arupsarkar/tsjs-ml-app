@@ -1,0 +1,9 @@
+{
+    "short_name": "tsjs-ml-app",
+    "name": "Tensorflow JS PWA App",
+    "icons":[{}],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#066ace",
+    "background_color": "#202020"    
+}
