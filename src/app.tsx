@@ -1,7 +1,8 @@
 import React from 'react'
+import { FC } from 'react'
 import './styles.css'
 
-const App = () => {
+const App:FC = () => {
     return(
         <div>
         <h1>Resize the browser window to see the effect!</h1>
