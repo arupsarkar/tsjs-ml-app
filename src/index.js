@@ -5,7 +5,7 @@ import styles from './styles.css'
 const Index = () => {
     return <div>
         <h1>
-            WELCOME TO REACT APP!
+            Hello World !!!
         </h1>
             
         </div>;
