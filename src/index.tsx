@@ -1,12 +1,13 @@
 import React from "react";
+import { createRoot } from 'react-dom/client';
 import ReactDOM from "react-dom";
-import styles from "./styles.css";
+import  './styles.css'
 
 const Index = () => {
   return (
     <div>
       <h1>Resize the browser window to see the effect!</h1>
-      <p class="header1">
+      <p className="header1">
         By default, the background color of the document is "tan". If the screen
         size is 992px or less, the color will change to "blue". If it is 600px
         or less, it will change to "olive".
@@ -68,4 +69,7 @@ const Index = () => {
     </div>
   );
 };
-ReactDOM.render(<Index />, document.getElementById("root"));
+const container = document.getElementById('root')!
+const root = createRoot(container)
+root.render(<Index />)
+// ReactDOM.render(<Index />, container);

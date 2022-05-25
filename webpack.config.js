@@ -5,7 +5,7 @@ const htmlPlugin = new HtmlWebPackPlugin({
   filename: "./index.html"
 });
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./src/index.tsx",
   output: { // NEW
     path: path.join(__dirname, 'dist'),
     filename: "[name].js"
@@ -20,6 +20,11 @@ module.exports = {
           loader: "babel-loader"
         }
       },
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: ["ts-loader"],
+      },      
       // css rules
       {
         test: /\.css$/,
