@@ -1,6 +1,29 @@
 {
+"description": "tensor flow JS, this app will demonstrate the capabilities of AI ML on web", 
+"shortcuts": [{}],
+"screenshots": [
+  {
+    "src": "https://www.pwabuilder.com/assets/screenshots/screen1.png",
+    "sizes": "2880x1800",
+    "type": "image/png",
+    "description": "PWABuilder Home Screen"
+  },
+  {
+    "src": "https://www.pwabuilder.com/assets/screenshots/screen2.png",
+    "sizes": "2880/1800",
+    "type": "image/png",
+    "description": "PWABuilder Report Card"
+  },
+  {
+    "src": "https://www.pwabuilder.com/assets/screenshots/screen3.png",
+    "sizes": "2880x1800",
+    "type": "image/png",
+    "description": "Manifest information on the Report Card"
+  }
+], 
+"orientation": "any", 
+    "name": "Tensorflow JS PWA App",    
     "short_name": "tsjs-ml-app",
-    "name": "Tensorflow JS PWA App",
     "icons":[{}],
     "start_url": ".",
     "display": "standalone",
