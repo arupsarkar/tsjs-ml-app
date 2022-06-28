@@ -6,6 +6,7 @@ import "./cnn-fashion-mnist.css";
 import { tfMin } from "../utils/scripts/tf-min";
 
 import * as tf from "@tensorflow/tfjs";
+import LoadingSpinner from "./loading-spinner";
 
 const CNN_Fashion_MNIST: FC = () => {
   const [model, setModel] = useState(false);
@@ -14,6 +15,7 @@ const CNN_Fashion_MNIST: FC = () => {
   const [outputsArray, setOutputsArray] = useState<Array<number>>([]);
   const [result, setResult] = useState<string>("");
   const [match, setMatch] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false)
 
   let inputs: number[][] = [];
   let outputs: number[] = [];
@@ -115,7 +117,7 @@ const CNN_Fashion_MNIST: FC = () => {
 
     OUTPUTS_TENSOR.dispose();
     INPUTS_TENSOR.dispose();
-
+    setLoading(false)
     //await evaluate(model, inputs);
     await evaluate(model);
   };
@@ -128,10 +130,11 @@ const CNN_Fashion_MNIST: FC = () => {
     event.preventDefault();
     const button: HTMLButtonElement = event.currentTarget;
     setClickedButton(button.name);
-
+    setLoading(true)
     try {
       console.log("Starting model", "tf min");
       const response = await fetch("https://cnn-fashion-mnist.herokuapp.com/fashion-mnist-api");
+      // const response = await fetch("http://localhost:3000/fashion-mnist-api");
       const data: any = await response.json();
       setInputsArray(data.inputs);
       setOutputsArray(data.outputs);
@@ -191,7 +194,7 @@ const CNN_Fashion_MNIST: FC = () => {
         layers (1 hidden) of the form (32 : 16 : 10) to classify fashion items
         from the Fashion MNIST dataset.
       </p>
-      <p>See console for even more outputs.</p>
+      <p>Click Predict button to evaluate the model. See console for even more outputs. The image recyles every 5 seconds.</p>
       <div>
         <div>
           <div>
@@ -206,7 +209,7 @@ const CNN_Fashion_MNIST: FC = () => {
               Input image is a 28x28 pixel greyscale image from the Fashion
               MNIST dataset - a piece of clothing!
             </p>
-            <canvas className="canvas-box" ref={canvasRef} />
+            <canvas className="canvas-box" width={28} height={28} ref={canvasRef} />
           </section>
 
           <section className="box">
@@ -222,7 +225,11 @@ const CNN_Fashion_MNIST: FC = () => {
             </p>
             <div>
               {result.length < 1 ? (
-                <p id="prediction">Training model. Please wait...</p>
+                <div>
+                  <p id="prediction">Training model. Please wait...</p>
+                  {loading ? <LoadingSpinner/> : <p></p>}
+                  
+                </div>
               ) : (
                 <p></p>
               )}

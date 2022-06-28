@@ -1,7 +1,7 @@
-canvas-box {
+.canvas-box {
     display: block;
-    width: 100px;
-    height: 100px;
+    width: 28px;
+    height: 28px;
     margin: 10px auto 5px auto;
     zoom: 6;
   }
@@ -51,4 +51,30 @@ canvas-box {
     outline: none;
     margin: 0 auto;
     display: block;
+  }
+
+
+
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 10px solid #cb0707; /* Light grey */
+    border-top: 10px solid #383636; /* Blue */
+    border-radius: 50%;
+    animation: spinner 1.5s linear infinite;
+  }
+  
+  .spinner-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
   }
