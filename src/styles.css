@@ -36,3 +36,21 @@ body {
     color: white;
     -webkit-font-smoothing: antialiased;
   }
+
+  .button {
+    margin: 10px 5px;
+    padding: 15px 30px;
+    background: purple;
+    color: white;
+    cursor: pointer;
+    border-radius: 30px;
+    border: none;
+  }
+  
+  .button:hover {
+    background: orangered;
+  }
+
+  .button:left {
+    background: purple;
+  }
