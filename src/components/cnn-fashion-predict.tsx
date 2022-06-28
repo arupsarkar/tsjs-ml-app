@@ -35,7 +35,9 @@ const CNN_Fashion_MNIST: FC = () => {
   const [canvasElem, setCanvasElem] = useState<HTMLCanvasElement>();
 
   const drawImage = async (model: any, digit: any) => {
+    console.log('---> before digit ', digit)
     digit = await tf.tensor(digit, [28, 28]).div(255);
+    console.log('---> after digit ', digit)
     await tf.browser.toPixels(digit, canvasElem);
     setTimeout(() => {
       evaluate(model);
@@ -129,7 +131,7 @@ const CNN_Fashion_MNIST: FC = () => {
 
     try {
       console.log("Starting model", "tf min");
-      const response = await fetch("http://localhost:3000/fashion-mnist-api");
+      const response = await fetch("https://cnn-fashion-mnist.herokuapp.com/fashion-mnist-api");
       const data: any = await response.json();
       setInputsArray(data.inputs);
       setOutputsArray(data.outputs);
