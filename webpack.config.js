@@ -2,11 +2,28 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const WorkboxPlugin = require("workbox-webpack-plugin");
 const path = require("path");
 const webpack = require("webpack");
-
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 // const htmlPlugin = new HtmlWebPackPlugin({
 //   template: "./src/index.html",
 //   filename: "./index.html",
 // });
+const webpackPwaManifestPlugin = new WebpackPwaManifest({
+  name: 'CNN PWA Fashion MNIST App',
+  short_name: 'cnn-pwa-fmnist',
+  description: 'My awesome Progressive Web App!',
+  background_color: '#ffffff',
+  theme_color: '#ffffff',
+  publicPath: '.' ,
+  icons: [
+    {
+      src: path.resolve('src/images/icons/512.png'),
+      sizes: [512] // multiple sizes
+    }
+  ]
+});
+
+
+
 
 const htmlWebPackPlugin =  new HtmlWebPackPlugin({
   title: "PWA Webpack Demo",
@@ -35,7 +52,7 @@ module.exports = {
     path: path.join(__dirname, "dist"),
     filename: "[name].js",
   }, // NEW Ends
-  plugins: [htmlWebPackPlugin, workBoxPlugin_Generate, processEnvPlugin],
+  plugins: [htmlWebPackPlugin, workBoxPlugin_Generate, processEnvPlugin, webpackPwaManifestPlugin],
   module: {
     rules: [
       {
